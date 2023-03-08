@@ -3,12 +3,16 @@ import produce from 'immer';
 // state
 import { handleActions } from 'redux-actions';
 // constants
-import { HOME_ACTION_TYPES } from '../constants/home.constants';
 
 const initialState = {
   fetchError: null,
   smoothies: null,
 };
+
+export const HOME_ACTION_TYPES = {
+  SET_FETCH_ERROR: 'SET_FETCH_ERROR',
+  SET_SMOOTHIES: 'SET_SMOOTHIES',
+}
 
 export default handleActions({
   [HOME_ACTION_TYPES.SET_FETCH_ERROR]: (state, payload) => produce(state, updatedState => {
