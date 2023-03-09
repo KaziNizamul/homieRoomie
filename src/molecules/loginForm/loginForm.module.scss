@@ -2,83 +2,46 @@ $inputPadding: 0.75rem 0.6rem;
 $white: #fff;
 $black: #000;
 
-@mixin blackAndWhiteTheme {
-  background-color: $black;
-  color: $white;
-}
-
-@mixin flexCenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@mixin affixWrapper {
-  :global([class*='ant-input-affix-wrapper']) {
-    @include blackAndWhiteTheme;
-    border-radius: 0.8rem;
-    &:hover {
-      color: green;
-    }
+@mixin blankPlaceholder {
+  :global([class*='supabase-auth-ui_ui-input']) {
+    color: #fff;
   }
+  ::-webkit-input-placeholder {
+    color:transparent;
+  }
+  :-moz-placeholder {
+    color:transparent; 
+  }
+  ::-moz-placeholder {
+    color:transparent; 
+  }
+  :-ms-input-placeholder {  
+    color:transparent;
+  }
+}
+
+@mixin backGlow {
+  -webkit-box-shadow:0px 0px 300px 0px rgba(116,44,19,0.28);
+  -moz-box-shadow: 0px 0px 300px 0px rgba(116,44,19,0.28);
+  box-shadow: 0px 0px 300px 0px rgba(116,44,19,0.28);
 }
 
 .loginFormContainer {
-  width: 18rem;
-  position: relative;
-  top: 30%;
-  .phoneNumberFormItem {
-    @include blackAndWhiteTheme;
-    .inputTypePhoneNumber {
-      padding: $inputPadding;
-      @include blackAndWhiteTheme;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 7rem;
+  
+  .loginForm {
+    width: 20rem;
+    background-color: #212122;
+    padding: 2rem 1.5rem;
+    border-radius: 0.7rem;
 
-    @include affixWrapper;
-
-    :global([id*='phoneNumberArea']) {
-      @include blackAndWhiteTheme;
-      &::placeholder {
-        color: $white;
-      }
-    }
+    @include blankPlaceholder;
+    @include backGlow;
+   
   }
-  .passwordFormItem {
-    @include blackAndWhiteTheme;
-    .inputTypePassword {
-      padding: $inputPadding;
-      @include blackAndWhiteTheme;
-    }
-
-    @include affixWrapper;
-
-    :global([id*='passwordArea']) {
-      @include blackAndWhiteTheme;
-      &::placeholder {
-        color: $white;
-      }
-    }
-  }
- 
-  :global([class*='ant-form-item-explain-error']) {
-    display: none;
-  }
-  .submitBtnContainer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1.5rem;
-    gap: 1rem;
-    .formSubmitBtn {
-      @include flexCenter;
-      color: #fff;
-      background-color: #d46036;
-      border-radius: 1.2rem;
-      padding: 1.3rem 1rem;
-    }
-    .formClearBtn {
-      color: #fff;
-      @include flexCenter;
-    }
-  }
- 
 }
+
+

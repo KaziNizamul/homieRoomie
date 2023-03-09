@@ -1,74 +1,33 @@
-import React from 'react';
-import cx from 'classnames';
-import { Form, Input, Button } from 'antd';
-import { LockOutlined, PhoneOutlined } from '@ant-design/icons';
+import React, { useEffect } from 'react';
+import { Auth } from '@supabase/auth-ui-react';
+import { ThemeSupa } from '@supabase/auth-ui-shared';
 import styles from './loginForm.module.scss'
 
-const LoginForm = () => {
-  const [form] = Form.useForm();
-
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-    // Add code here to handle form submission, such as making an API call to authenticate the user
-  };
-
+const LoginForm = ({
+  supabase,
+}) => {
+  const { user, session } = Auth.useUser();
+    console.log({user, session})
   return (
     <div className={styles.loginFormContainer}>
-      <Form
-        form={form}
-        name="loginForm"
-        onFinish={onFinish}
-        initialValues={{
-          remember: true,
-        }}
-      >
-        <Form.Item
-          className={styles.phoneNumberFormItem}
-          name="phoneNumberArea"
-          rules={[
-            { required: true, },
-            {
-              pattern: /^\d{10}$/,
-              message: 'Please input a valid 10-digit phone number!',
+      <div className={styles.loginForm}>
+        <Auth
+          supabaseClient={supabase}
+          appearance={{
+            theme: ThemeSupa,
+            variables: {
+              default: {
+                colors: {
+                  brand: '#d46036',
+                  brandAccent: '#b84117',
+                },
+              },
             },
-          ]}
-        >
-          <Input
-            prefix={<PhoneOutlined className={cx('site-form-item-icon', styles.inputTypePhoneNumber)} />}
-            placeholder="Phone Number"
-            autoComplete='off'
-          />
-        </Form.Item>
-
-        <Form.Item
-          className={styles.passwordFormItem}
-          name="passwordArea"
-          rules={[
-            { required: true, },
-          ]}
-        >
-          <Input.Password 
-            prefix={<LockOutlined className={cx('site-form-item-icon', styles.inputTypePassword)} />}
-            type="password"
-            placeholder="Password"
-            autoComplete='off'
-          />
-        </Form.Item>
-
-        <Form.Item>
-          <div className={styles.submitBtnContainer}> 
-            <div
-              className={styles.formClearBtn}
-              onClick={() => form.resetFields()}
-            >
-              Clear
-            </div>
-            <Button type="primary" htmlType="submit" className={styles.formSubmitBtn}>
-              Log in
-            </Button>
-          </div>
-        </Form.Item>
-      </Form>
+          }}
+          socialLayout="horizontal"
+          providers={[]}
+        />
+      </div>
     </div>
   );
 };

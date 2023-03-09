@@ -1,18 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 // external imports
 import supabase from '../../config/supabaseClient';
 import { connect } from 'react-redux';
-// internal imports
-import LoginForm from '../../molecules/loginForm/loginForm';
-// utilitie
+// utilities
 import HomeUtils from './utils/home.utils';
 // styles
 import styles from './home.module.scss';
+import LoginForm from '../../molecules/loginForm/loginForm';
 
 const Home = () => {
-  const [fetchError, setFetchError] = useState(null);
-  // const [smoothies, setSmoothies] = useState(null);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,23 +17,18 @@ const Home = () => {
     try {
       const [, error] = await HomeUtils.fetchSupabaseData({ supabase });
       if (error) {
-        setFetchError(error.message);
         return;
       } else {
-        // setSmoothies(data);
-        setFetchError(null);
       }
     } catch (error) {
-      // setSmoothies(null);
-      setFetchError(error);
     }
   };
 
-  console.log(supabase);
   return (
     <div className={styles.homeContainer}>
-      {fetchError && <p>{fetchError}</p>}
-      {<LoginForm />}
+      <LoginForm
+        supabase={supabase}
+      />
     </div>
   )
 }
