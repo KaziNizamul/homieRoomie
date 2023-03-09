@@ -4,9 +4,11 @@ import supabase from '../../config/supabaseClient';
 import { connect } from 'react-redux';
 // utilities
 import HomeUtils from './utils/home.utils';
+// components
+import LoginForm from '../../molecules/loginForm/loginForm';
 // styles
 import styles from './home.module.scss';
-import LoginForm from '../../molecules/loginForm/loginForm';
+import Header from '../../atoms/header.component';
 
 const Home = () => {
   useEffect(() => {
@@ -26,6 +28,7 @@ const Home = () => {
 
   return (
     <div className={styles.homeContainer}>
+      <Header />
       <LoginForm
         supabase={supabase}
       />

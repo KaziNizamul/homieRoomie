@@ -6,6 +6,7 @@
 /dist
 /.pnp
 .pnp.js
+/.parcel-cache
 
 # testing
 /coverage
@@ -26,3 +27,4 @@ yarn-error.log*
 .env
 package-lock.json
 yarn.lock
+.parcel-cache/*
