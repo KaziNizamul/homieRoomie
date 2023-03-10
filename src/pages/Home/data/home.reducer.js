@@ -1,21 +1,22 @@
 // external imports
 import produce from 'immer';
-// state
 import { handleActions } from 'redux-actions';
-// constants
 
 const initialState = {
-  fetchError: null,
-  smoothies: null,
+  user: null,
+  supabase: null,
 };
 
 export const HOME_ACTION_TYPES = {
-  SET_FETCH_ERROR: 'SET_FETCH_ERROR',
-  SET_SMOOTHIES: 'SET_SMOOTHIES',
+  SET_USER: 'SET_USER',
+  SET_SUPABASE: 'SET_SUPABASE',
 }
 
 export default handleActions({
-  [HOME_ACTION_TYPES.SET_FETCH_ERROR]: (state, payload) => produce(state, updatedState => {
-    updatedState.fetchError = payload;
+  [HOME_ACTION_TYPES.SET_USER]: (state, { payload }) => produce(state, updatedState => {
+    updatedState.user = payload;
+  }),
+  [HOME_ACTION_TYPES.SET_SUPABASE]: (state, { payload }) => produce(state, updatedState => {
+    updatedState.supabase = payload;
   }),
 }, initialState);

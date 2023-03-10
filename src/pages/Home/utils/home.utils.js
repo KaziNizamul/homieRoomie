@@ -1,12 +1,12 @@
 class HomeUtils {
-  static fetchSupabaseData = async ({
+  static onHeaderChangeHandler = async ({
     supabase,
   }) => {
-    const { data, error } = await supabase
-    .from("smoothies")
-    .select("*")
-
-    return [data, error]
+    try {
+      await supabase.auth.signOut()
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 

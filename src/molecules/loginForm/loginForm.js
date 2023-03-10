@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 import styles from './loginForm.module.scss'
@@ -6,8 +5,7 @@ import styles from './loginForm.module.scss'
 const LoginForm = ({
   supabase,
 }) => {
-  const { user, session } = Auth.useUser();
-    console.log({user, session})
+  if (!supabase) return null;
   return (
     <div className={styles.loginFormContainer}>
       <div className={styles.loginForm}>

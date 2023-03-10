@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .logoutContainer {
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+    padding: 1.5rem 2rem 2rem;
+  }
+}
