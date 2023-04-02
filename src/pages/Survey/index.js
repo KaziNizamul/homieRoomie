@@ -10,13 +10,16 @@ import { json as surveyData } from './constants/surveyData';
 import styles from './survey.module.scss';
 
 const SurveyPage = () => {
-  const model = new Model(surveyData);
+  const survey = new Model(surveyData);
   StylesManager.applyTheme('orange');
+  survey.onComplete.add((sender, options) => {
+    console.log(JSON.stringify(sender.data));
+  });
   return (
     <div className={styles.surveyContainer}>
       <Survey
         className={styles.survey}
-        model={model}
+        model={survey}
       />
     </div>
   );
