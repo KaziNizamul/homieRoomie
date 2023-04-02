@@ -1,6 +1,5 @@
 // external imports
-import { combineReducers } from 'redux';
-import { legacy_createStore as createStore } from 'redux';
+import { combineReducers, legacy_createStore as createStore } from 'redux';
 // components
 import homePageReducer from '../pages/Home/data/home.reducer';
 

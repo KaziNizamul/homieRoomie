@@ -3,9 +3,9 @@ class HomeUtils {
     supabase,
   }) => {
     try {
-      await supabase.auth.signOut()
+      await supabase.auth.signOut();
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 }

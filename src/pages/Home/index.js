@@ -4,34 +4,34 @@ import _get from 'lodash/get';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // utilities
-// import HomeUtils from './utils/home.utils';
+import HomeUtils from './utils/home.utils';
 import { EMPTY_FUNCTION } from '../../utils/helper';
 // components
 import Header from '../../atoms/header.component';
 import LoginForm from '../../molecules/loginForm/loginForm';
 import SupabaseAuth from './auth';
+import SurveyPage from '../Survey';
 // styles
 import styles from './home.module.scss';
 
 const Home = ({
   user, supabase, onHeaderChangeHandler,
 }) => (
-  <>
-    <div className={styles.homeContainer}>
-      { <SupabaseAuth /> }
-      { <Header
-        user={user}
-        onHeaderChangeHandler={() => onHeaderChangeHandler(supabase)}
+  <div className={styles.homeContainer}>
+    { <SupabaseAuth /> }
+    { <Header
+      user={user}
+      onHeaderChangeHandler={() => onHeaderChangeHandler(supabase)}
+    />}
+    {!user && (
+      <LoginForm
+        supabase={supabase}
       />
-      }
-      {!user && (
-        <LoginForm
-          supabase={supabase}
-        />
-      )}
-      {user && <div style={{ color: 'white' }}>survey JS form </div>}
-    </div>
-  </>
+    )}
+    {user && (
+      <SurveyPage />
+    )}
+  </div>
 );
 
 Home.propTypes = {

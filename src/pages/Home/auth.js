@@ -13,16 +13,16 @@ const Auth = ({
 }) => {
   useEffect(() => {
     setSupabase(supabaseData);
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (!supabase) return;
     supabase?.auth.getSession()
       .then(({ data: { session = EMPTY_OBJECT } = EMPTY_OBJECT }) => {
         setUser(session?.user);
-      })
+      });
 
-    const { data: authListener = []} = supabase?.auth?.onAuthStateChange(
+    const { data: authListener = [] } = supabase?.auth?.onAuthStateChange(
       async (event, session) => {
         switch (event) {
           case 'SIGNED_IN': {
@@ -41,13 +41,13 @@ const Auth = ({
     );
     return () => {
       authListener.unsubscribe();
-    }
-  }, [supabase])
-}
+    };
+  }, [supabase]);
+};
 
 Auth.propTypes = {
   setUser: PropTypes.func.isRequired,
-}
+};
 
 const mapStateToProps = ({ homePageReducer }) => ({
   supabase: _get(homePageReducer, 'supabase'),
