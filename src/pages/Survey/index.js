@@ -1,14 +1,25 @@
 import React from 'react';
 // external import
-import 'survey-core/defaultV2.css';
-import { Model } from 'survey-core';
+import 'survey-core/modern.css';
+import 'survey-creator-core/survey-creator-core.css';
+import { Model, StylesManager } from 'survey-core';
 import { Survey } from 'survey-react-ui';
 // constants
-import surveyData from './constants/surveyData';
+import { json as surveyData } from './constants/surveyData';
+// styles
+import styles from './survey.module.scss';
 
 const SurveyPage = () => {
   const model = new Model(surveyData);
-  return <Survey model={model}></Survey>;
+  StylesManager.applyTheme('orange');
+  return (
+    <div className={styles.surveyContainer}>
+      <Survey
+        className={styles.survey}
+        model={model}
+      />
+    </div>
+  );
 };
 
 export default SurveyPage;

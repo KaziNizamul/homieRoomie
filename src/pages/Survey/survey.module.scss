@@ -1,0 +1,38 @@
+.surveyContainer {
+  .survey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4rem;
+    :global([class*='sv-container-modern']) {
+      color: white
+    }
+    :global(form){
+      width: 50rem;
+      :global(h5) {
+        background-color: transparent;
+        :global([class*='sv-question__required-text']) {
+          display: none;
+        }
+      }
+      :global([class*='sv-text']) {
+        color: #fff;
+        background-color: transparent;
+      }
+      :global([class*='sv-question__content']) {
+        :global(fieldset) {
+          :global([class*='sv-radio--checked']) {
+            :global(label) {
+              input[type="radio"]:checked + span {
+                :global([class*='sv-radio__svg']) {
+                  fill: orange;
+                  border-color: orange;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
