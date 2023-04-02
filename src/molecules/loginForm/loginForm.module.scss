@@ -2,6 +2,7 @@ $inputPadding: 0.75rem 0.6rem;
 $white: #fff;
 $black: #000;
 $gray: #808080;
+$orange: #d46036;
 
 @mixin blankPlaceholder {
   :global([class*='supabase-auth-ui_ui-input']) {
@@ -43,7 +44,7 @@ $gray: #808080;
     @include backGlow;
    
     :global([class*='supabase-auth-ui_ui-message']) {
-      color: $white;
+      color: $orange;
     }
   }
 }

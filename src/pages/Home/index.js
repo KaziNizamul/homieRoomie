@@ -28,7 +28,7 @@ const Home = ({
           supabase={supabase}
         />
       )}
-      {user && 'heloooooo'}
+      {user && <div style={{ color: 'white' }}>survey JS form </div>}
     </div>
   )
 }
